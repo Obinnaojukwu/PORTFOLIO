@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="css/styles.css"> 
+
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#000000" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 5, random: true },
+                    line_linked: { enable: true, color: "#000000", opacity: 0.4 },
+                    move: { enable: true, speed: 6 },
+                },
+                interactivity: {
+                    events: { onhover: { enable: true, mode: "repulse" } },
+                    modes: { repulse: { distance: 100 } },
+                },
+                retina_detect: true,
+            });
+        });
+    </script>
+
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;   
+            font-family: Arial, sans-serif;
+            flex-direction: column; 
+        }
+
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        header {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        header nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+
+        header nav ul li {
+            display: inline-block;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        header nav ul li a:hover {
+            background-color: #444;
+        }
+
+        .project-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px; 
+            z-index: 2; 
+        }
+
+        .project-images img {
+            width: 300px; 
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="project.html">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   
+    <div id="particles-js"></div>
+
+    
+    <section class="project-images">
+        <img src="images/project1.jpg" alt="Project 1">
+        <img src="images/Project2.webp" alt="Project 2">
+    </section>
+    
+
+  
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img[data-src]');
+            const loadImg = (img) => {
+                img.setAttribute('src', img.getAttribute('data-src'));
+                img.removeAttribute('data-src');
+            };
+
+            const imgObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadImg(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            images.forEach(img => {
+                imgObserver.observe(img);
+            });
+        });
+    </script>
+
+</body>
+</html>
